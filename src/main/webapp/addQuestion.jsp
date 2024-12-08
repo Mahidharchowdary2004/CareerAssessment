@@ -1,130 +1,214 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Questions - Career Management System</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
     <style>
-        body {
-            background-color: #f8f9fa;
-            padding-top: 50px;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
+
+        @keyframes slideIn {
+            from { transform: translateX(-20px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
         .container {
             background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             padding: 30px;
-            margin-bottom: 50px;
+            width: 100%;
+            max-width: 800px;
+            margin-top: 20px;
+            animation: slideIn 0.8s ease-out;
         }
+
         h1, h2 {
-            color: #007bff;
+            color: #2c3e50;
+            text-align: center;
+            animation: fadeIn 0.8s ease-out;
         }
-        .form-group label {
-            font-weight: bold;
+
+        form {
+            display: grid;
+            gap: 20px;
         }
-        .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
+
+        label {
+            font-weight: 600;
+            color: #34495e;
+            display: block;
+            margin-bottom: 8px;
+            transition: color 0.3s ease;
         }
-        .btn-primary:hover {
-            background-color: #0056b3;
-            border-color: #0056b3;
+
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
         }
+
+        input:focus, textarea:focus, select:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+            outline: none;
+        }
+
+        textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+
+        button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+        }
+
+        button:active {
+            transform: translateY(1px);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
         .char-counter {
             font-size: 0.8em;
             color: #6c757d;
+            text-align: right;
+        }
+
+        .is-invalid {
+            border-color: #dc3545;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1 class="text-center mb-4"><i class="fas fa-question-circle mr-2"></i>Manage Questions</h1>
+        <h1><i class="fas fa-question-circle"></i> Manage Questions</h1>
 
-        <h2 class="mb-3"><i class="fas fa-plus-circle mr-2"></i>Add Question</h2>
-        <form action="<c:url value='/addQuestion'/>" method="post" id="questionForm">
-            <div class="form-group">
+        <h2><i class="fas fa-plus-circle"></i> Add Question</h2>
+        <form action="add" method="post" id="questionForm">
+            <div>
                 <label for="questionTitle">Question Title:</label>
-                <textarea class="form-control" id="questionTitle" name="questionTitle" rows="3" required maxlength="500"></textarea>
-                <small class="char-counter" id="titleCounter">0 / 500 characters</small>
+                <textarea id="questionTitle" name="questionTitle" required maxlength="500"></textarea>
+                <div class="char-counter" id="titleCounter">0 / 500 characters</div>
             </div>
 
             <div class="form-row">
-                <div class="form-group col-md-6">
+                <div>
                     <label for="option1">Option A:</label>
-                    <input type="text" class="form-control" id="option1" name="option1" required>
+                    <input id="option1" type="text" name="option1" required>
                 </div>
-                <div class="form-group col-md-6">
+                <div>
                     <label for="option2">Option B:</label>
-                    <input type="text" class="form-control" id="option2" name="option2" required>
+                    <input id="option2" type="text" name="option2" required>
                 </div>
             </div>
 
             <div class="form-row">
-                <div class="form-group col-md-6">
+                <div>
                     <label for="option3">Option C:</label>
-                    <input type="text" class="form-control" id="option3" name="option3" required>
+                    <input id="option3" type="text" name="option3" required>
                 </div>
-                <div class="form-group col-md-6">
+                <div>
                     <label for="option4">Option D:</label>
-                    <input type="text" class="form-control" id="option4" name="option4" required>
+                    <input id="option4" type="text" name="option4" required>
                 </div>
             </div>
 
-            <div class="form-group">
+            <div>
                 <label for="rightAnswer">Right Answer:</label>
-                <select class="form-control" id="rightAnswer" name="rightAnswer" required>
-                    <option value="">Select the correct option</option>
-                    <option value="A">Option A</option>
-                    <option value="B">Option B</option>
-                    <option value="C">Option C</option>
-                    <option value="D">Option D</option>
-                </select>
+                <input id="rightAnswer" type="text" name="rightAnswer" required placeholder="Enter the correct answer">
             </div>
 
             <div class="form-row">
-                <div class="form-group col-md-6">
+                <div>
                     <label for="difficultlevel">Difficulty Level:</label>
-                    <select class="form-control" id="difficultlevel" name="difficultlevel" required>
+                    <select id="difficultlevel" name="difficultlevel" required>
                         <option value="">Select difficulty</option>
                         <option value="Easy">Easy</option>
                         <option value="Medium">Medium</option>
                         <option value="Hard">Hard</option>
                     </select>
                 </div>
-                <div class="form-group col-md-6">
+                <div>
                     <label for="category">Category:</label>
-                    <input type="text" class="form-control" id="category" name="category" required>
+                    <input id="category" type="text" name="category" required>
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-save mr-2"></i>Add Question</button>
+            <button type="submit"><i class="fas fa-save"></i> Add Question</button>
         </form>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        $(document).ready(function() {
-            // Character counter for question title
-            $('#questionTitle').on('input', function() {
-                var charCount = $(this).val().length;
-                $('#titleCounter').text(charCount + ' / 500 characters');
+        document.addEventListener('DOMContentLoaded', function() {
+            const questionTitle = document.getElementById('questionTitle');
+            const titleCounter = document.getElementById('titleCounter');
+            const form = document.getElementById('questionForm');
+
+            questionTitle.addEventListener('input', function() {
+                const charCount = this.value.length;
+                titleCounter.textContent = charCount + ' / 500 characters';
             });
 
-            // Form validation
-            $('#questionForm').submit(function(event) {
-                var isValid = true;
-                $(this).find('input, textarea, select').each(function() {
-                    if ($(this).prop('required') && !$(this).val()) {
+            form.addEventListener('submit', function(event) {
+                let isValid = true;
+                const requiredFields = form.querySelectorAll('[required]');
+
+                requiredFields.forEach(function(field) {
+                    if (!field.value.trim()) {
                         isValid = false;
-                        $(this).addClass('is-invalid');
+                        field.classList.add('is-invalid');
                     } else {
-                        $(this).removeClass('is-invalid');
+                        field.classList.remove('is-invalid');
                     }
                 });
 

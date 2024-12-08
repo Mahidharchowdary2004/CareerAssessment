@@ -122,7 +122,6 @@
                 <li><a href="adminlogin">Logout</a></li>
                 <li><a href="viewallquestions">View All Questions</a></li>
                 <li><a href="addQuestion.jsp">Add Question</a></li>
-                <li><a href="questions.jsp">View Question by Category</a></li>
                 <li><a href="createQuiz.jsp">Create Quiz</a></li>
             </ul>
         </nav>

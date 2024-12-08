@@ -22,6 +22,7 @@ import com.klef.jfsd.project.StudentCarrerProject.model.Student;
 import com.klef.jfsd.project.StudentCarrerProject.service.AdminService;
 import com.klef.jfsd.project.StudentCarrerProject.service.QuestionService;
 import com.klef.jfsd.project.StudentCarrerProject.service.QuizService;
+import com.klef.jfsd.project.StudentCarrerProject.service.StudentService;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -84,9 +85,6 @@ public class AdminController {
 	    return mv;
 	}
 
-
-
-	
 	
 	@GetMapping("category/{category}")
 	public ResponseEntity <List<Question>> getQuetionsByCategory(@PathVariable String category){
@@ -121,9 +119,19 @@ public class AdminController {
 	    // Return a view or redirect to another page
 	    return "redirect:/success"; // Modify according to your actual flow
 	}
-
-
 	
+	
+
+
+	@GetMapping("verifyuser")
+	public ModelAndView verifyUser(@RequestParam("id") int id) {
+	    ModelAndView mv = new ModelAndView();
+	    String msg = servies.verifyUser(id); // Assuming this method verifies the student
+	    mv.addObject("msg", msg); // Display the message
+	    mv.setViewName("redirect:/viewallstudent"); // Redirect back to the view all students page
+	    return mv;
+	}
+
 	
 	@DeleteMapping("delete/{id}")
 	public Object deleteQuestion(@PathVariable int id) {
@@ -192,6 +200,7 @@ public class AdminController {
 		
 		return "redirect:/deleteStudent";
 	}
+	
 	@GetMapping("viewstudentbyid")
 	 public ModelAndView viewstudentbyid() {
 		ModelAndView mv = new ModelAndView();
@@ -202,6 +211,8 @@ public class AdminController {
 		mv.setViewName("viewstudentbyid");
 		return mv;
 	}
+	
+	
 	@PostMapping("displaystudent")
 	
 	public ModelAndView displaycustomer(HttpServletRequest request)
@@ -223,15 +234,5 @@ public class AdminController {
 	}
 
 
-	@GetMapping("verifyuser")
-	public ModelAndView verifyUser(@RequestParam("id") int id) {
-	    ModelAndView mv = new ModelAndView();
-	    String msg = servies.verifyUser(id); // Assuming this method verifies the student
-	    mv.addObject("msg", msg); // Display the message
-	    mv.setViewName("redirect:/viewallstudent"); // Redirect back to the view all students page
-	    return mv;
-	}
-
-	
 	
 }

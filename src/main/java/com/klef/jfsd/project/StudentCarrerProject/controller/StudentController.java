@@ -43,6 +43,7 @@ public class StudentController {
         mv.setViewName("studentRegistration");
         return mv;
     }
+    
 
     @GetMapping("studentLogin")
     public ModelAndView customerLogin() {
