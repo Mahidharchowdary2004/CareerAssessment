@@ -10,18 +10,10 @@ public class StudentService {
 	@Autowired
 	private StudentRepo repo;
 	
-	@Autowired
-	private EmailService emailService;
+
 	
 	public String StudentRegistration(Student student) {
 	    repo.save(student);
-
-	    // Use the injected EmailService bean
-	    emailService.sendEmail(
-	        student.getEmail(),
-	        "Registration Successful",
-	        "Dear " + student.getName() + ",\n\nYour registration is successful!"
-	    );
 
 	    return "Registration completed";
 	}
