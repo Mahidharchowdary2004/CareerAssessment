@@ -65,7 +65,7 @@
 <body>
     <div class="container text-center">
         <!-- Company Logo -->
-        <img src="https://www.shutterstock.com/image-vector/success-people-logo-template-design-600nw-2482425567.jpg" alt="Company Logo" class="logo">
+        <img src="logo.png" alt="Company Logo" class="logo">
         <h2>Career Management System</h2>
         <nav>
             <ul class="list-inline">

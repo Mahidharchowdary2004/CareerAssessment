@@ -188,7 +188,7 @@
                 
                 <!-- Team Member 2 -->
                 <div class="team-card">
-                    <img src="ivek.jpg" alt="Team Member 2">
+                    <img src="vivek.jpg" alt="Team Member 2">
                     <h3> AKHILL</h3>
                     <p>Frontend Developer - Designs and develops user-friendly interfaces using JSP integrated with HTML, CSS, and JavaScript, ensuring a responsive and dynamic user experience.</p>
                 </div>
