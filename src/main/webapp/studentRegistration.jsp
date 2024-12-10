@@ -9,7 +9,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
         body {
-            background-image: url('https://img.freepik.com/free-photo/close-up-negotiating-table_1098-2600.jpg?t=st=1733512320~exp=1733515920~hmac=6f237212207591efa10fe0fdd95867afdf9a34b7e9b13d3586ca51da841116c6&w=996'); /* Replace with your image URL */
+            background-image: url('https://media.licdn.com/dms/image/v2/C4E12AQGsg_30A2dqjQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1630998431487?e=2147483647&v=beta&t=pzawDEbCBeOy9Q6j7uL1QHYxM2GO0Robi8mQkV9OmJ0'); /* Replace with your image URL */
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
