@@ -135,7 +135,7 @@
     <div class="container text-center">
         <!-- Logo Section -->
         <div class="logo-container">
-            <img src="https://www.shutterstock.com/image-vector/success-people-logo-template-design-600nw-2482425567.jpg" alt="Career Management Logo" class="logo">
+            <img src="logo.png" alt="Career Management Logo" class="logo">
         </div>
 
         <h2><i class="glyphicon glyphicon-briefcase"></i> Career Management System</h2>
@@ -186,9 +186,9 @@
     <footer>
         <p>&copy; <%= java.time.Year.now().getValue() %> Career Management System. All Rights Reserved.</p>
         <div class="social-icons">
-            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-square"></i><span class="sr-only">Facebook</span></a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter-square"></i><span class="sr-only">Twitter</span></a>
-            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i><span class="sr-only">LinkedIn</span></a>
+            <a href="https://www.facebook.com/Mahidhar.Chowdary.2004" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-square"></i><span class="sr-only">Facebook</span></a>
+            <a href="https://x.com/Mahidhar2004" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter-square"></i><span class="sr-only">Twitter</span></a>
+            <a href="https://www.linkedin.com/in/nallapaneni-mahidhar/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i><span class="sr-only">LinkedIn</span></a>
             <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i><span class="sr-only">Instagram</span></a>
         </div>
     </footer>

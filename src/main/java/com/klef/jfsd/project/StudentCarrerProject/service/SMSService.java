@@ -13,11 +13,11 @@ import com.twilio.type.PhoneNumber;
 @Service
 public class SMSService {
 	
-	private final String ACCOUNT_SID ="AC7a0fe20fbc5889a0934774d2dff1e544";
+	private final String ACCOUNT_SID ="Account_SID From Twilio website";
 
-    private final String AUTH_TOKEN = "6186452b84c61a9eaebdf94cff6ccf41";
+    private final String AUTH_TOKEN = "AUTH_TOKEN From Twilio";
 
-    private final String FROM_NUMBER = "+17753754345";
+    private final String FROM_NUMBER = "your phone number should verify by twilio then the number should enter";
 
     public void send(Sms sms) {
     	Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
